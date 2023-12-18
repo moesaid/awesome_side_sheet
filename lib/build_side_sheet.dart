@@ -1,3 +1,4 @@
+import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/Widgets/build_footer.dart';
 import 'package:awesome_side_sheet/Widgets/build_header.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,9 @@ class SideSheet extends StatelessWidget {
   // [sheetWidth] is the width of the sheet
   final double sheetWidth;
 
+  // [borderRadius] is the border radius of the sheet Note: if provided, border line will be set to null
+  final double? borderRadius;
+
   // [confirmActionOnPressed] is the onPressed of the confirm action button in the footer if [footer] is null
   final void Function()? confirmActionOnPressed;
 
@@ -56,6 +60,9 @@ class SideSheet extends StatelessWidget {
 
   // [onClose] is the onPressed of the close button in the header if [header] is null
   final void Function()? onClose;
+
+  // [sheetPosition] is the position of the sheet on the screen (left or right)
+  final SheetPosition sheetPosition;
 
   const SideSheet({
     Key? key,
@@ -77,6 +84,8 @@ class SideSheet extends StatelessWidget {
     required this.showCloseButton,
     required this.onClose,
     required this.sheetWidth,
+    required this.sheetPosition,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -89,15 +98,35 @@ class SideSheet extends StatelessWidget {
       elevation: 1,
       color: colorScheme.surface,
       surfaceTintColor: colorScheme.surfaceTint,
+      borderRadius: borderRadius == null
+          ? null
+          : BorderRadius.only(
+              topLeft: (sheetPosition == SheetPosition.right)
+                  ? Radius.circular(borderRadius ?? 0)
+                  : Radius.zero,
+              bottomLeft: (sheetPosition == SheetPosition.right)
+                  ? Radius.circular(borderRadius ?? 0)
+                  : Radius.zero,
+              topRight: (sheetPosition == SheetPosition.left)
+                  ? Radius.circular(borderRadius ?? 0)
+                  : Radius.zero,
+              bottomRight: (sheetPosition == SheetPosition.left)
+                  ? Radius.circular(borderRadius ?? 0)
+                  : Radius.zero,
+            ),
       child: SafeArea(
         top: safeAreaTop,
         bottom: safeAreaBottom,
         child: Container(
           decoration: BoxDecoration(
-            border: showSideDivider
+            border: showSideDivider && borderRadius == null
                 ? Border(
                     left: BorderSide(
-                      width: 1,
+                      width: (sheetPosition == SheetPosition.right) ? 1 : 0,
+                      color: colorScheme.onSurface.withOpacity(0.1),
+                    ),
+                    right: BorderSide(
+                      width: (sheetPosition == SheetPosition.left) ? 1 : 0,
                       color: colorScheme.onSurface.withOpacity(0.1),
                     ),
                   )

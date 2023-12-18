@@ -1,10 +1,12 @@
 library side_sheet;
 
+import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/build_side_sheet.dart';
 import 'package:flutter/material.dart';
 
 Future<void> aweSideSheet({
   required BuildContext context,
+  required SheetPosition sheetPosition,
   Widget? body,
   Widget? footer,
   Widget? header,
@@ -28,6 +30,7 @@ Future<void> aweSideSheet({
   void Function()? onClose,
   Duration? transitionDuration,
   double sheetWidth = 400,
+  double? borderRadius,
 }) async {
   await showGeneralDialog(
     context: context,
@@ -37,15 +40,22 @@ Future<void> aweSideSheet({
     barrierLabel: 'Material 3 side sheet',
     transitionBuilder: (context, animation, secondaryAnimation, child) {
       return SlideTransition(
-        position: Tween(begin: const Offset(1, 0), end: const Offset(0, 0))
-            .animate(animation),
+        position: Tween(
+          begin: (sheetPosition == SheetPosition.right)
+              ? const Offset(1, 0)
+              : const Offset(-1, 0),
+          end: const Offset(0, 0),
+        ).animate(animation),
         child: child,
       );
     },
     pageBuilder: (context, animation1, animation2) {
       return Align(
-        alignment: Alignment.centerRight,
+        alignment: (sheetPosition == SheetPosition.right)
+            ? Alignment.centerRight
+            : Alignment.centerLeft,
         child: SideSheet(
+          sheetPosition: sheetPosition,
           title: title,
           body: body ?? const SizedBox(),
           footer: footer,
@@ -64,6 +74,7 @@ Future<void> aweSideSheet({
           showCloseButton: showCloseButton,
           onClose: onClose,
           sheetWidth: sheetWidth,
+          borderRadius: borderRadius,
         ),
       );
     },

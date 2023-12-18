@@ -1,0 +1,4 @@
+enum SheetPosition {
+  left,
+  right,
+}
