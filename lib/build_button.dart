@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class FilledButton extends StatelessWidget {
+class BuildButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Widget child;
 
-  const FilledButton({Key? key, this.onPressed, required this.child})
+  const BuildButton({Key? key, this.onPressed, required this.child})
       : super(key: key);
 
   @override

@@ -1,3 +1,4 @@
+import 'package:awesome_side_sheet/build_footer.dart';
 import 'package:flutter/material.dart';
 
 class SideSheet extends StatelessWidget {
@@ -8,7 +9,15 @@ class SideSheet extends StatelessWidget {
   final bool showBackButton;
   final bool showCloseButton;
   final bool showActions;
-  final bool showDivider;
+
+  // dividers
+  // [showFooterDivider] shows a divider between the body and footer
+  final bool showFooterDivider;
+  // [showHeaderDivider] shows a divider between the header and body
+  final bool showHeaderDivider;
+  // [showSideDivider] shows a divider between the sheet and the screen
+  final bool showSideDivider;
+
   final bool safeAreaTop;
   final bool safeAreaBottom;
   final String confirmActionText;
@@ -29,7 +38,9 @@ class SideSheet extends StatelessWidget {
     this.title,
     required this.showBackButton,
     required this.showActions,
-    required this.showDivider,
+    required this.showFooterDivider,
+    required this.showHeaderDivider,
+    required this.showSideDivider,
     required this.safeAreaTop,
     required this.safeAreaBottom,
     required this.confirmActionOnPressed,
@@ -57,8 +68,17 @@ class SideSheet extends StatelessWidget {
       child: SafeArea(
         top: safeAreaTop,
         bottom: safeAreaBottom,
-        minimum: EdgeInsets.only(top: showBackButton ? 16 : 24),
         child: Container(
+          decoration: BoxDecoration(
+            border: showSideDivider
+                ? Border(
+                    left: BorderSide(
+                      width: 1,
+                      color: colorScheme.onSurface.withOpacity(0.1),
+                    ),
+                  )
+                : null,
+          ),
           constraints: BoxConstraints(
             minWidth: 256,
             maxWidth: size.width <= 600 ? size.width : sheetWidth,
@@ -67,14 +87,25 @@ class SideSheet extends StatelessWidget {
           ),
           child: Column(
             children: [
-              _buildHeader(textTheme, context),
+              header ?? _buildHeader(textTheme, context),
+              showHeaderDivider
+                  ? Divider(
+                      height: 1,
+                      thickness: 0.5,
+                      color: colorScheme.onSurface.withOpacity(0.1),
+                    )
+                  : const SizedBox(),
               Expanded(
                 child: body!,
               ),
-              Visibility(
-                visible: showActions,
-                child: _buildFooter(context),
-              ),
+              showFooterDivider
+                  ? Divider(
+                      height: 1,
+                      thickness: 0.5,
+                      color: colorScheme.onSurface.withOpacity(0.1),
+                    )
+                  : const SizedBox(),
+              footer ?? const BuildFooter()
             ],
           ),
         ),
@@ -130,42 +161,6 @@ class SideSheet extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildFooter(BuildContext context) {
-    return Column(
-      children: [
-        Visibility(
-          visible: showDivider,
-          child: const Divider(
-            indent: 24,
-            endIndent: 24,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 16, 24, 24),
-          child: Row(
-            children: [
-              FilledButton(
-                onPressed: confirmActionOnPressed,
-                child: Text(confirmActionText),
-              ),
-              const SizedBox(width: 12),
-              OutlinedButton(
-                onPressed: () {
-                  if (cancelActionOnPressed == null) {
-                    Navigator.pop(context);
-                  } else {
-                    cancelActionOnPressed!();
-                  }
-                },
-                child: Text(cancelActionText),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
