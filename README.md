@@ -6,6 +6,8 @@
 
 Awesome Side Sheet is a Flutter package that provides a flexible and customizable side sheet implementation for your Flutter applications. It allows you to easily integrate a sliding panel or drawer with various features and customization options.
 
+## Screenshots
+
 ## Features
 
 - Slide-in side sheet with configurable width and position.
@@ -42,6 +44,59 @@ aweSideSheet(context: context);
 ```
 
 For more detailed examples and use cases, check the /example folder in the package repository.
+
+## exposed api
+
+```dart
+  // required
+  required BuildContext context,
+  required SheetPosition sheetPosition,
+
+  // widgets
+  Widget? body,
+  Widget? footer,
+  Widget? header,
+
+  // bools
+  bool barrierDismissible = true,
+  bool showBackButton = true,
+  bool showCloseButton = true,
+  bool showActions = true,
+  bool showFooterDivider = true,
+  bool showHeaderDivider = true,
+  bool showSideDivider = true,
+  bool safeAreaTop = true,
+  bool safeAreaBottom = true,
+
+  // strings
+  String confirmActionText = 'Save',
+  String cancelActionText = 'Cancel',
+  String? title,
+
+  // duration
+  Duration? transitionDuration,
+
+  // doubles
+  double sheetWidth = 400 <- default,
+  double? borderRadius,
+
+  // Colors
+  Color? backgroundColor,
+  surfaceTintColor,
+  textColor,
+  iconColor,
+  dividerColor,
+  confirmButtonBgColor,
+  confirmButtonTextColor,
+  cancelButtonBgColor,
+  cancelButtonTextColor,
+
+  // callbacks
+  void Function()? onConfirm,
+  void Function()? onCancel,
+  void Function()? onDismiss,
+  void Function()? onClose,
+```
 
 ## Additional Information
 
