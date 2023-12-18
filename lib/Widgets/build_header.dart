@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+/// A widget that builds the header for a side sheet.
+///
+/// The header includes a back button, a title, and a close button.
+/// The back button is optional and can be shown or hidden using the [showBackButton] parameter.
+/// The title is optional and defaults to 'Title' if not provided.
+/// The close button is optional and can be shown or hidden using the [showCloseButton] parameter.
+/// The [onClose] callback is called when the close button is pressed or when the back button is pressed and [onClose] is null.
+/// The [backButtonTooltip] and [closeButtonTooltip] parameters can be used to provide tooltips for the back and close buttons, respectively.
+/// The [padding] parameter can be used to specify the padding around the header.
+///
+
 class BuildHeader extends StatelessWidget {
   final void Function()? onClose;
   final String? backButtonTooltip;
