@@ -1,18 +1,24 @@
-name: Publish to pub.dev
+name: Publish Package
 
 on:
   push:
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+*"
+    branches:
+      - main
+
 jobs:
   publish:
     permissions:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: dart-lang/setup-dart@v1
-      - name: Install dependencies
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+
+      - name: Install Dependencies
         run: flutter pub get
-      - name: Publish
+
+      - name: Publish Package
         run: dart pub publish --force
