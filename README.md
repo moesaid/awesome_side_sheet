@@ -1,6 +1,6 @@
 # Awesome Side Sheet
 
-![moesaid - mohamed s abdrabou - flutter awesome side sheet - sidesheet](https://raw.githubusercontent.com/moesaid/awesome_side_sheet/main/markting/Thumbnail.jpg?token=GHSAT0AAAAAACLXAO2WOK5QOGCVAM6SHKCCZMAS7HA)
+![moesaid - mohamed s abdrabou - flutter awesome side sheet - sidesheet](https://i.ibb.co/58yPR74/Thumbnail.jpg)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 

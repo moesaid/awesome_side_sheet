@@ -14,7 +14,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "85d683e6254de18fe52baaad2529a22e3df5eb59"
+      resolved-ref: "5c544c766daa94e17f3ff9be00849c9a1b4bb109"
       url: "https://github.com/moesaid/awesome_side_sheet.git"
     source: git
     version: "0.0.1"
