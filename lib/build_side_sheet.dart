@@ -1,4 +1,5 @@
-import 'package:awesome_side_sheet/build_footer.dart';
+import 'package:awesome_side_sheet/Widgets/build_footer.dart';
+import 'package:awesome_side_sheet/Widgets/build_header.dart';
 import 'package:flutter/material.dart';
 
 class SideSheet extends StatelessWidget {
@@ -87,7 +88,7 @@ class SideSheet extends StatelessWidget {
           ),
           child: Column(
             children: [
-              header ?? _buildHeader(textTheme, context),
+              header ?? const BuildHeader(),
               showHeaderDivider
                   ? Divider(
                       height: 1,
@@ -109,57 +110,6 @@ class SideSheet extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildHeader(TextTheme textTheme, BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(showBackButton ? 16 : 24, 0, 16, 16),
-      child: Row(
-        children: [
-          Visibility(
-            visible: showBackButton,
-            child: Container(
-              margin: const EdgeInsets.only(right: 12),
-              child: IconButton(
-                onPressed: () {
-                  if (onClose == null) {
-                    Navigator.pop(context);
-                  } else {
-                    onClose!();
-                  }
-                },
-                tooltip: backButtonTooltip,
-                icon: const Icon(Icons.arrow_back),
-              ),
-            ),
-          ),
-          Text(
-            title ?? '',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: textTheme.titleSmall,
-          ),
-          Flexible(
-            fit: FlexFit.tight,
-            child: SizedBox(width: showCloseButton ? 12 : 8),
-          ),
-          Visibility(
-            visible: showCloseButton,
-            child: IconButton(
-              onPressed: () {
-                if (onClose == null) {
-                  Navigator.pop(context);
-                } else {
-                  onClose!();
-                }
-              },
-              tooltip: closeButtonTooltip,
-              icon: const Icon(Icons.close),
-            ),
-          ),
-        ],
       ),
     );
   }
