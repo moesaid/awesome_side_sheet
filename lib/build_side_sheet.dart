@@ -64,6 +64,23 @@ class SideSheet extends StatelessWidget {
   // [sheetPosition] is the position of the sheet on the screen (left or right)
   final SheetPosition sheetPosition;
 
+  // [headerPadding] is the padding of the header
+  final EdgeInsetsGeometry? headerPadding;
+
+  // [footerPadding] is the padding of the footer
+  final EdgeInsetsGeometry? footerPadding;
+
+  // Colors
+  final Color? backgroundColor,
+      surfaceTintColor,
+      textColor,
+      iconColor,
+      dividerColor,
+      confirmButtonBgColor,
+      confirmButtonTextColor,
+      cancelButtonBgColor,
+      cancelButtonTextColor;
+
   const SideSheet({
     Key? key,
     this.body,
@@ -86,6 +103,17 @@ class SideSheet extends StatelessWidget {
     required this.sheetWidth,
     required this.sheetPosition,
     this.borderRadius,
+    this.backgroundColor,
+    this.surfaceTintColor,
+    this.textColor,
+    this.iconColor,
+    this.dividerColor,
+    this.confirmButtonBgColor,
+    this.confirmButtonTextColor,
+    this.cancelButtonBgColor,
+    this.cancelButtonTextColor,
+    this.headerPadding,
+    this.footerPadding,
   }) : super(key: key);
 
   @override
@@ -95,9 +123,9 @@ class SideSheet extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Material(
-      elevation: 1,
-      color: colorScheme.surface,
-      surfaceTintColor: colorScheme.surfaceTint,
+      elevation: 0,
+      color: backgroundColor ?? colorScheme.surface,
+      surfaceTintColor: surfaceTintColor ?? colorScheme.surfaceTint,
       borderRadius: borderRadius == null
           ? null
           : BorderRadius.only(
@@ -123,11 +151,17 @@ class SideSheet extends StatelessWidget {
                 ? Border(
                     left: BorderSide(
                       width: (sheetPosition == SheetPosition.right) ? 1 : 0,
-                      color: colorScheme.onSurface.withOpacity(0.1),
+                      color: dividerColor ??
+                          (surfaceTintColor != null
+                              ? surfaceTintColor!.withOpacity(0.1)
+                              : colorScheme.onSurface.withOpacity(0.1)),
                     ),
                     right: BorderSide(
                       width: (sheetPosition == SheetPosition.left) ? 1 : 0,
-                      color: colorScheme.onSurface.withOpacity(0.1),
+                      color: dividerColor ??
+                          (surfaceTintColor != null
+                              ? surfaceTintColor!.withOpacity(0.1)
+                              : colorScheme.onSurface.withOpacity(0.1)),
                     ),
                   )
                 : null,
@@ -140,12 +174,22 @@ class SideSheet extends StatelessWidget {
           ),
           child: Column(
             children: [
-              header ?? const BuildHeader(),
+              header ??
+                  BuildHeader(
+                    title: title,
+                    showBackButton: showBackButton,
+                    showCloseButton: showCloseButton,
+                    onClose: onClose,
+                    padding: headerPadding,
+                  ),
               showHeaderDivider
                   ? Divider(
                       height: 1,
                       thickness: 0.5,
-                      color: colorScheme.onSurface.withOpacity(0.1),
+                      color: dividerColor ??
+                          (surfaceTintColor != null
+                              ? surfaceTintColor!.withOpacity(0.1)
+                              : colorScheme.onSurface.withOpacity(0.1)),
                     )
                   : const SizedBox(),
               Expanded(
@@ -155,11 +199,17 @@ class SideSheet extends StatelessWidget {
                   ? Divider(
                       height: 1,
                       thickness: 0.5,
-                      color: colorScheme.onSurface.withOpacity(0.1),
+                      color: dividerColor ??
+                          (surfaceTintColor != null
+                              ? surfaceTintColor!.withOpacity(0.1)
+                              : colorScheme.onSurface.withOpacity(0.1)),
                     )
                   : const SizedBox(),
               footer ??
                   BuildFooter(
+                    cancelActionOnPressed: cancelActionOnPressed,
+                    confirmActionOnPressed: confirmActionOnPressed,
+                    padding: footerPadding,
                     confirmActionText: confirmActionText,
                     cancelActionText: cancelActionText,
                   )

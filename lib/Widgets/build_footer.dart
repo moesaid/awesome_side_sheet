@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 class BuildFooter extends StatelessWidget {
   final void Function()? confirmActionOnPressed;
   final void Function()? cancelActionOnPressed;
-  final bool? showDivider;
   final String confirmActionText;
   final String cancelActionText;
   final EdgeInsetsGeometry? padding;
   const BuildFooter({
     super.key,
-    this.showDivider,
     this.confirmActionOnPressed,
     this.cancelActionOnPressed,
     this.padding,

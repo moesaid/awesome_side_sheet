@@ -5,32 +5,56 @@ import 'package:awesome_side_sheet/build_side_sheet.dart';
 import 'package:flutter/material.dart';
 
 Future<void> aweSideSheet({
+  // required
   required BuildContext context,
   required SheetPosition sheetPosition,
+
+  // widgets
   Widget? body,
   Widget? footer,
   Widget? header,
-  String? title,
-  bool barrierDismissible = false,
-  bool showBackButton = false,
+
+  // bools
+  bool barrierDismissible = true,
+  bool showBackButton = true,
   bool showCloseButton = true,
   bool showActions = true,
   bool showFooterDivider = true,
   bool showHeaderDivider = true,
   bool showSideDivider = true,
   bool safeAreaTop = true,
-  bool safeAreaBottom = false,
+  bool safeAreaBottom = true,
+
+  // strings
   String confirmActionText = 'Save',
   String cancelActionText = 'Cancel',
   String? closeButtonTooltip = 'Close',
   String? backButtonTooltip = 'Back',
+  String? title,
+
+  // duration
+  Duration? transitionDuration,
+
+  // doubles
+  double sheetWidth = 400,
+  double? borderRadius,
+
+  // Colors
+  Color? backgroundColor,
+  surfaceTintColor,
+  textColor,
+  iconColor,
+  dividerColor,
+  confirmButtonBgColor,
+  confirmButtonTextColor,
+  cancelButtonBgColor,
+  cancelButtonTextColor,
+
+  // callbacks
   void Function()? onConfirm,
   void Function()? onCancel,
   void Function()? onDismiss,
   void Function()? onClose,
-  Duration? transitionDuration,
-  double sheetWidth = 400,
-  double? borderRadius,
 }) async {
   await showGeneralDialog(
     context: context,
@@ -55,11 +79,18 @@ Future<void> aweSideSheet({
             ? Alignment.centerRight
             : Alignment.centerLeft,
         child: SideSheet(
+          // enums
           sheetPosition: sheetPosition,
+          // strings
           title: title,
+          // widgets
           body: body ?? const SizedBox(),
           footer: footer,
           header: header,
+          // doubles
+          sheetWidth: sheetWidth,
+          borderRadius: borderRadius,
+          // bools
           showFooterDivider: showFooterDivider,
           showHeaderDivider: showHeaderDivider,
           showSideDivider: showSideDivider,
@@ -67,14 +98,23 @@ Future<void> aweSideSheet({
           showActions: showActions,
           safeAreaTop: safeAreaTop,
           safeAreaBottom: safeAreaBottom,
+          // callbacks
           confirmActionOnPressed: onConfirm,
           cancelActionOnPressed: onCancel,
           confirmActionText: confirmActionText,
           cancelActionText: cancelActionText,
           showCloseButton: showCloseButton,
           onClose: onClose,
-          sheetWidth: sheetWidth,
-          borderRadius: borderRadius,
+          // Colors
+          backgroundColor: backgroundColor,
+          surfaceTintColor: surfaceTintColor,
+          textColor: textColor,
+          iconColor: iconColor,
+          dividerColor: dividerColor,
+          confirmButtonBgColor: confirmButtonBgColor,
+          confirmButtonTextColor: confirmButtonTextColor,
+          cancelButtonBgColor: cancelButtonBgColor,
+          cancelButtonTextColor: cancelButtonTextColor,
         ),
       );
     },
