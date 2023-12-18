@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 Future<void> aweSideSheet({
   required BuildContext context,
   Widget? body,
+  Widget? footer,
+  Widget? header,
   String? title,
   bool barrierDismissible = false,
   bool showBackButton = false,
@@ -46,6 +48,8 @@ Future<void> aweSideSheet({
         child: SideSheet(
           title: title,
           body: body ?? const SizedBox(),
+          footer: footer,
+          header: header,
           showFooterDivider: showFooterDivider,
           showHeaderDivider: showHeaderDivider,
           showSideDivider: showSideDivider,
@@ -57,8 +61,6 @@ Future<void> aweSideSheet({
           cancelActionOnPressed: onCancel,
           confirmActionText: confirmActionText,
           cancelActionText: cancelActionText,
-          closeButtonTooltip: closeButtonTooltip,
-          backButtonTooltip: backButtonTooltip,
           showCloseButton: showCloseButton,
           onClose: onClose,
           sheetWidth: sheetWidth,

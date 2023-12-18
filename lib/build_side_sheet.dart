@@ -3,33 +3,59 @@ import 'package:awesome_side_sheet/Widgets/build_header.dart';
 import 'package:flutter/material.dart';
 
 class SideSheet extends StatelessWidget {
+  // [body] is the main content of the sheet
   final Widget? body;
+
+  // [header] is the top of the sheet
   final Widget? header;
+
+  // [footer] is the bottom of the sheet
   final Widget? footer;
+
+  // [title] is the title of the sheet and is displayed in the header if [header] is null
   final String? title;
+
+  // [showBackButton] shows a back button in the header if [header] is null
   final bool showBackButton;
+
+  // [showCloseButton] shows a close button in the header if [header] is null
   final bool showCloseButton;
+
+  // [showActions] shows the actions in the footer if [footer] is null
   final bool showActions;
 
-  // dividers
   // [showFooterDivider] shows a divider between the body and footer
   final bool showFooterDivider;
+
   // [showHeaderDivider] shows a divider between the header and body
   final bool showHeaderDivider;
+
   // [showSideDivider] shows a divider between the sheet and the screen
   final bool showSideDivider;
 
+  // [safeAreaTop] adds a safe area to the top of the sheet
   final bool safeAreaTop;
-  final bool safeAreaBottom;
-  final String confirmActionText;
-  final String cancelActionText;
-  final String? closeButtonTooltip;
-  final String? backButtonTooltip;
 
-  final void Function()? confirmActionOnPressed;
-  final void Function()? cancelActionOnPressed;
-  final void Function()? onClose;
+  // [safeAreaBottom] adds a safe area to the bottom of the sheet
+  final bool safeAreaBottom;
+
+  // [confirmActionText] is the text of the confirm action button in the footer if [footer] is null
+  final String confirmActionText;
+
+  // [cancelActionText] is the text of the cancel action button in the footer if [footer] is null
+  final String cancelActionText;
+
+  // [sheetWidth] is the width of the sheet
   final double sheetWidth;
+
+  // [confirmActionOnPressed] is the onPressed of the confirm action button in the footer if [footer] is null
+  final void Function()? confirmActionOnPressed;
+
+  // [cancelActionOnPressed] is the onPressed of the cancel action button in the footer if [footer] is null
+  final void Function()? cancelActionOnPressed;
+
+  // [onClose] is the onPressed of the close button in the header if [header] is null
+  final void Function()? onClose;
 
   const SideSheet({
     Key? key,
@@ -48,8 +74,6 @@ class SideSheet extends StatelessWidget {
     required this.cancelActionOnPressed,
     required this.confirmActionText,
     required this.cancelActionText,
-    required this.closeButtonTooltip,
-    required this.backButtonTooltip,
     required this.showCloseButton,
     required this.onClose,
     required this.sheetWidth,
@@ -59,7 +83,6 @@ class SideSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
 
     return Material(
@@ -106,7 +129,11 @@ class SideSheet extends StatelessWidget {
                       color: colorScheme.onSurface.withOpacity(0.1),
                     )
                   : const SizedBox(),
-              footer ?? const BuildFooter()
+              footer ??
+                  BuildFooter(
+                    confirmActionText: confirmActionText,
+                    cancelActionText: cancelActionText,
+                  )
             ],
           ),
         ),

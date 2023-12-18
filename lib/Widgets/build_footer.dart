@@ -1,21 +1,21 @@
-import 'package:awesome_side_sheet/build_button.dart';
+import 'package:awesome_side_sheet/Widgets/build_button.dart';
 import 'package:flutter/material.dart';
 
 class BuildFooter extends StatelessWidget {
   final void Function()? confirmActionOnPressed;
   final void Function()? cancelActionOnPressed;
   final bool? showDivider;
-  final String? confirmActionText;
-  final String? cancelActionText;
+  final String confirmActionText;
+  final String cancelActionText;
   final EdgeInsetsGeometry? padding;
   const BuildFooter({
     super.key,
     this.showDivider,
     this.confirmActionOnPressed,
-    this.confirmActionText,
     this.cancelActionOnPressed,
-    this.cancelActionText,
     this.padding,
+    required this.confirmActionText,
+    required this.cancelActionText,
   });
 
   @override
@@ -34,12 +34,12 @@ class BuildFooter extends StatelessWidget {
               BuildButton(
                 onPressed: confirmActionOnPressed ??
                     () => debugPrint('on confirm action pressed'),
-                child: Text(confirmActionText ?? 'Confirm'),
+                child: Text(confirmActionText),
               ),
               SizedBox(width: width * 0.01),
               BuildButton(
                 onPressed: cancelActionOnPressed,
-                child: Text(cancelActionText ?? 'Cancel'),
+                child: Text(cancelActionText),
               ),
             ],
           ),
