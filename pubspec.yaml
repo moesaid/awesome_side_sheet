@@ -1,9 +1,5 @@
 name: awesome_side_sheet
-description: "|
-  A Flutter package for displaying a modal side sheet, following the Material Design 3 specification.
-  This package provides a customizable side sheet with a title, body, and optional header and footer actions.
-  It offers features such as a back button, close button, and customizable action buttons for easy integration
-  into Flutter applications."
+description: "Flutter package for Material Design 3 modal side sheets with customizable title, body, and actions."
 version: 0.0.3
 homepage: https://github.com/moesaid/awesome_side_sheet
 
