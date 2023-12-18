@@ -1,12 +1,24 @@
 import 'package:awesome_side_sheet/Widgets/build_button.dart';
 import 'package:flutter/material.dart';
 
+/// A widget that builds the footer section of a side sheet.
+///
+/// The footer section typically contains buttons for confirming and canceling actions.
 class BuildFooter extends StatelessWidget {
   final void Function()? confirmActionOnPressed;
   final void Function()? cancelActionOnPressed;
   final String confirmActionText;
   final String cancelActionText;
   final EdgeInsetsGeometry? padding;
+
+  /// Creates a [BuildFooter] widget.
+  ///
+  /// The [confirmActionOnPressed] and [cancelActionOnPressed] are optional callbacks
+  /// that will be invoked when the corresponding buttons are pressed.
+  ///
+  /// The [confirmActionText] and [cancelActionText] are the texts displayed on the buttons.
+  ///
+  /// The [padding] is the amount of space to surround the footer section.
   const BuildFooter({
     super.key,
     this.confirmActionOnPressed,
