@@ -1,40 +1,58 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Awesome Side Sheet
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+<!-- [![Pub Version](https://img.shields.io/pub/v/awesome_side_sheet)](https://pub.dev/packages/awesome_side_sheet) -->
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Awesome Side Sheet is a Flutter package that provides a flexible and customizable side sheet implementation for your Flutter applications. It allows you to easily integrate a sliding panel or drawer with various features and customization options.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Slide-in side sheet with configurable width and position.
+- Customizable appearance with options for background color, text color, button colors, and more.
+- Support for header, body, and footer sections within the side sheet.
+- Optional actions, back button, close button, and dividers for improved flexibility.
+- Smooth transition animations for a polished user interface.
 
-## Getting started
+## Getting Started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To use this package in your Flutter project, add it to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  awesome_side_sheet: ^1.0.0
+```
+
+Then, run:
+
+```bash
+$ flutter pub get
+```
+
+For detailed information on how to integrate packages into your Flutter project, refer to the [Flutter documentation on dependencies](https://flutter.dev/docs/development/packages-and-plugins/using-packages).
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Here is a simple example demonstrating how to use the Awesome Side Sheet:
 
 ```dart
-const like = 'sample';
+import 'package:awesome_side_sheet/awesome_side_sheet.dart';
+
+aweSideSheet(context: context);
 ```
 
-## Additional information
+For more detailed examples and use cases, check the /example folder in the package repository.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
-# awesome_side_sheet
+## Additional Information
+
+- If you encounter any issues or have suggestions for improvement, please file an issue.
+- Contributions are welcome! Feel free to open pull requests to help enhance this package.
+- Enjoy using the Awesome Side Sheet in your Flutter applications!
+
+## License
+
+awesome_side_sheet is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
+
+## credits
+
+awesome_side_sheet created by [Mohamed S Abdrabou](https://github.com/moesaid)

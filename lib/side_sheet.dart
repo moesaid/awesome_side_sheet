@@ -28,8 +28,6 @@ Future<void> aweSideSheet({
   // strings
   String confirmActionText = 'Save',
   String cancelActionText = 'Cancel',
-  String? closeButtonTooltip = 'Close',
-  String? backButtonTooltip = 'Back',
   String? title,
 
   // duration
