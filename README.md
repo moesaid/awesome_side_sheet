@@ -1,12 +1,10 @@
 # Awesome Side Sheet
 
-<!-- [![Pub Version](https://img.shields.io/pub/v/awesome_side_sheet)](https://pub.dev/packages/awesome_side_sheet) -->
+![moesaid - mohamed s abdrabou - flutter awesome side sheet - sidesheet](https://raw.githubusercontent.com/moesaid/awesome_side_sheet/main/markting/Thumbnail.jpg?token=GHSAT0AAAAAACLXAO2WOK5QOGCVAM6SHKCCZMAS7HA)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Awesome Side Sheet is a Flutter package that provides a flexible and customizable side sheet implementation for your Flutter applications. It allows you to easily integrate a sliding panel or drawer with various features and customization options.
-
-## Screenshots
 
 ## Features
 
