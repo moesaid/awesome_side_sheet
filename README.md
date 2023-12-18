@@ -20,7 +20,7 @@ To use this package in your Flutter project, add it to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  awesome_side_sheet: ^1.0.0
+  awesome_side_sheet: ^latest_version
 ```
 
 Then, run:
